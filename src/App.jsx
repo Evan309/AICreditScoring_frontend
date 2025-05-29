@@ -19,7 +19,6 @@ function App() {
         <div className='form-container'>
           <h2>Financial Information</h2>
           <form>
-
             <section className = 'form-section'>
               <h3>Personal Information</h3>
 
@@ -221,11 +220,13 @@ function App() {
           <h2>Predicted Credit Score</h2>
 
           <div className = 'output-group'>
-            <h2>Your Credit Score</h2>
+            <h3>Your Credit Score</h3>
           </div>
         </div>
       </div>
     </>
+
+    
   )
 }
 

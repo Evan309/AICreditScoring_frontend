@@ -1,1 +1,8 @@
-
+:root {
+  height: 100vh; /* Make sure the root div takes at least the full viewport height */
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  background-color: rgb(236, 236, 236);
+  font-family: 'Arial', sans-serif;
+}
