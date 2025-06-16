@@ -4,11 +4,69 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [formData, setFormData] = useState({
+    Age: '',
+    Annual_Income: '',
+    Monthly_Inhand_Salary: '',
+    Occupation: '',
+    Num_Bank_Accounts: '',
+    Num_Credit_Card: '',
+    Monthly_Balance: '',
+    Changed_Credit_Limit: '',
+    Credit_History_Age: '',
+    Outstanding_Debt: '',
+    Number_of_Delayed_Payment: '',
+    Credit_Mix: '',
+    Credit_Utilization_Ratio: '',
+    Delay_From_Due_Date: '',
+    Number_of_Loans: '',
+    Interest_Rate: '',
+    Total_EMI_Per_Month: '',
+    Loan_Type: '',
+    Payment_of_Minimum_Amount: '',
+    Spend_Level: '',
+    Payment_Size: '',
+    Amount_Invested_Monthly: ''
+  });
 
+  const [prediction, setPrediction] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
+  const predict = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('http://localhost:5000/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get prediction');
+      }
+
+      const data = await response.json();
+      setPrediction(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -18,7 +76,7 @@ function App() {
       <div className='form-output-grid'>
         <div className='form-container'>
           <h2>Financial Information</h2>
-          <form>
+          <form onSubmit={predict}>
             <section className = 'form-section'>
               <h3>Personal Information</h3>
 
@@ -26,22 +84,45 @@ function App() {
 
                 <div className = 'form-group'>
                   <label htmlFor='Age'>Age</label>
-                  <input type='number' placeholder="Enter your age" />
+                  <input 
+                    type='number' 
+                    name="Age"
+                    value={formData.Age}
+                    onChange={handleInputChange}
+                    placeholder="Enter your age" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Annual_Income'>Annual Income ($)</label>
-                  <input type='number' placeholder="Enter annual income" />
+                  <input 
+                    type='number' 
+                    name="Annual_Income"
+                    value={formData.Annual_Income}
+                    onChange={handleInputChange}
+                    placeholder="Enter annual income" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Monthly_Inhand_Salary'>Monthly Inhand Salary ($)</label>
-                  <input type='number' placeholder="Enter monthly in-hand salary" />
+                  <input 
+                    type='number' 
+                    name="Monthly_Inhand_Salary"
+                    value={formData.Monthly_Inhand_Salary}
+                    onChange={handleInputChange}
+                    placeholder="Enter monthly in-hand salary" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Occupation'>Occupation</label>
-                  <select id='Occupation'>
+                  <select 
+                    id='Occupation'
+                    name="Occupation"
+                    value={formData.Occupation}
+                    onChange={handleInputChange}
+                  >
                     <option value="">Select Occupation</option>
                     <option value="Scientist">Scientist</option>
                     <option value="Teacher">Teacher</option>
@@ -72,22 +153,46 @@ function App() {
 
                 <div className = 'form-group'>
                   <label htmlFor='Num_Bank_Accounts'>Number of Bank Accounts</label>
-                  <input type='number' placeholder="Enter number of bank accounts" />
+                  <input 
+                    type='number' 
+                    name="Num_Bank_Accounts"
+                    value={formData.Num_Bank_Accounts}
+                    onChange={handleInputChange}
+                    placeholder="Enter number of bank accounts" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Num_Credit_Card'>Number of Credit Cards</label>
-                  <input type='number' placeholder="Enter number of credit cards" />
+                  <input 
+                    type='number' 
+                    name="Num_Credit_Card"
+                    value={formData.Num_Credit_Card}
+                    onChange={handleInputChange}
+                    placeholder="Enter number of credit cards" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Monthly_Balance'>Monthly Balance ($)</label>
-                  <input type='number' placeholder="Enter monthly balance" />
+                  <input 
+                    type='number' 
+                    name="Monthly_Balance"
+                    value={formData.Monthly_Balance}
+                    onChange={handleInputChange}
+                    placeholder="Enter monthly balance" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Changed_Credit_Limit'>Changed Credit Limit</label>
-                  <input type='number' placeholder="Enter changed credit limit" />
+                  <input 
+                    type='number' 
+                    name="Changed_Credit_Limit"
+                    value={formData.Changed_Credit_Limit}
+                    onChange={handleInputChange}
+                    placeholder="Enter changed credit limit" 
+                  />
                 </div>
 
               </div>
@@ -100,22 +205,45 @@ function App() {
 
                 <div className = 'form-group'>
                   <label htmlFor='Credit_History_Age'>Credit History Length</label>
-                  <input type='number' placeholder="Enter credit history length" />
+                  <input 
+                    type='number' 
+                    name="Credit_History_Age"
+                    value={formData.Credit_History_Age}
+                    onChange={handleInputChange}
+                    placeholder="Enter credit history length" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Outstanding_Debt'>Outstanding Debt ($)</label>
-                  <input type='number' placeholder="Enter outstanding debt" />
+                  <input 
+                    type='number' 
+                    name="Outstanding_Debt"
+                    value={formData.Outstanding_Debt}
+                    onChange={handleInputChange}
+                    placeholder="Enter outstanding debt" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Number_of_Delayed_Payment'>Number of Delayed Payments</label>
-                  <input type='number' placeholder="Enter number of delayed payments" />
+                  <input 
+                    type='number' 
+                    name="Number_of_Delayed_Payment"
+                    value={formData.Number_of_Delayed_Payment}
+                    onChange={handleInputChange}
+                    placeholder="Enter number of delayed payments" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Credit_Mix'>Credit Mix</label>
-                  <select id='Credit_Mix'>
+                  <select 
+                    id='Credit_Mix'
+                    name="Credit_Mix"
+                    value={formData.Credit_Mix}
+                    onChange={handleInputChange}
+                  >
                     <option value="">Select credit mix</option>
                     <option value="Bad">Bad</option>
                     <option value="Standard">Standard</option>
@@ -125,12 +253,24 @@ function App() {
 
                 <div className = 'form-group'>
                   <label htmlFor='Credit_Utilization_Ratio'>Credit Utilization Ratio (%)</label>
-                  <input type='number' placeholder="Enter credit utilization ratio" />
+                  <input 
+                    type='number' 
+                    name="Credit_Utilization_Ratio"
+                    value={formData.Credit_Utilization_Ratio}
+                    onChange={handleInputChange}
+                    placeholder="Enter credit utilization ratio" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Delay_From_Due_Date'>Delay from Due Date (days)</label>
-                  <input type='number' placeholder="Enter average delay from due date" />
+                  <input 
+                    type='number' 
+                    name="Delay_From_Due_Date"
+                    value={formData.Delay_From_Due_Date}
+                    onChange={handleInputChange}
+                    placeholder="Enter average delay from due date" 
+                  />
                 </div>
 
               </div>
@@ -143,22 +283,45 @@ function App() {
 
                 <div className = 'form-group'>
                   <label htmlFor='Number_of_Loans'>Number of Loans</label>
-                  <input type='number' placeholder="Enter number of loans" />
+                  <input 
+                    type='number' 
+                    name="Number_of_Loans"
+                    value={formData.Number_of_Loans}
+                    onChange={handleInputChange}
+                    placeholder="Enter number of loans" 
+                  />
                 </div>
                 
                 <div className = 'form-group'>
                   <label htmlFor='Interest_Rate'>Interest Rate (%)</label>
-                  <input type='number' placeholder="Enter interest rate" />
+                  <input 
+                    type='number' 
+                    name="Interest_Rate"
+                    value={formData.Interest_Rate}
+                    onChange={handleInputChange}
+                    placeholder="Enter interest rate" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Total_EMI_Per_Month'>Total EMI per Month ($)</label>
-                  <input type='number' placeholder="Enter total EMI per month" />
+                  <input 
+                    type='number' 
+                    name="Total_EMI_Per_Month"
+                    value={formData.Total_EMI_Per_Month}
+                    onChange={handleInputChange}
+                    placeholder="Enter total EMI per month" 
+                  />
                 </div>
 
                 <div className = 'form-group'>
                   <label htmlFor='Loan_Type'>Type of Loan</label>
-                  <select id="Loan_Type">
+                  <select 
+                    id="Loan_Type"
+                    name="Loan_Type"
+                    value={formData.Loan_Type}
+                    onChange={handleInputChange}
+                  >
                     <option value="">Select loan types</option>
                   </select>
                   {/* create drop down check box for input values. display only if 
@@ -173,7 +336,12 @@ function App() {
 
               <div className = 'form-group'>
                   <label htmlFor='Payment_of_Minimum_Amount'>Payment of Minimum Amount</label>
-                  <select id='Payment_of_Minimum_Amount'>
+                  <select 
+                    id='Payment_of_Minimum_Amount'
+                    name="Payment_of_Minimum_Amount"
+                    value={formData.Payment_of_Minimum_Amount}
+                    onChange={handleInputChange}
+                  >
                     <option value="">Select payment behavior</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -182,7 +350,12 @@ function App() {
 
                 <div className = 'form-group'>
                   <label htmlFor='Spend_Level'>Spend Level</label>
-                  <select id='Spend_Level'>
+                  <select 
+                    id='Spend_Level'
+                    name="Spend_Level"
+                    value={formData.Spend_Level}
+                    onChange={handleInputChange}
+                  >
                     <option value="">Select spend level</option>
                     <option value="Low">Low</option>
                     <option value="High">High</option>
@@ -191,7 +364,12 @@ function App() {
 
                 <div className = 'form-group'>
                   <label htmlFor='Payment_Size'>Payment Size</label>
-                  <select id='Payment_Size'>
+                  <select 
+                    id='Payment_Size'
+                    name="Payment_Size"
+                    value={formData.Payment_Size}
+                    onChange={handleInputChange}
+                  >
                     <option value="">Select payment size</option>
                     <option value="Small">Small</option>
                     <option value="Medium">Medium</option>
@@ -207,12 +385,21 @@ function App() {
 
                   <div className = 'form-group'>
                     <label htmlFor='Amount_Invested_Monthly'>Amount Invested Monthly ($)</label>
-                    <input type='number' placeholder="Enter monthly investment amount" />
+                    <input 
+                      type='number' 
+                      name="Amount_Invested_Monthly"
+                      value={formData.Amount_Invested_Monthly}
+                      onChange={handleInputChange}
+                      placeholder="Enter monthly investment amount" 
+                    />
                   </div>
 
               </div>
             </section>
 
+            <button type="submit" className="submit-button" disabled={loading}>
+              {loading ? 'Predicting...' : 'Predict Credit Score'}
+            </button>
           </form>
         </div>
 
@@ -221,6 +408,14 @@ function App() {
 
           <div className = 'output-group'>
             <h3>Your Credit Score</h3>
+            {loading && <p>Calculating your credit score...</p>}
+            {error && <p className="error">Error: {error}</p>}
+            {prediction && (
+              <div className="prediction-result">
+                <p className="score">{prediction.score}</p>
+                <p className="confidence">Confidence: {prediction.confidence}%</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

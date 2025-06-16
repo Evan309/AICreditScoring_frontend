@@ -42,3 +42,55 @@
   display: grid;
   grid-template-columns: 1fr;
 }
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 20px 0;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.prediction-result {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.prediction-result .score {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.prediction-result .confidence {
+  font-size: 18px;
+  color: #666;
+  margin: 10px 0 0 0;
+}
+
+.error {
+  color: #dc3545;
+  text-align: center;
+  padding: 10px;
+  background-color: #f8d7da;
+  border-radius: 4px;
+  margin: 10px 0;
+}
