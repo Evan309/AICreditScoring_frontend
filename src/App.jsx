@@ -22,7 +22,7 @@ function App() {
     Num_of_Loan: '',
     Interest_Rate: '',
     Total_EMI_per_month: '',
-    Type_of_Loan: '',
+    Loan_Type: '',
     Payment_of_Min_Amount: '',
     Spend_Level: '',
     Payment_Size: '',
@@ -315,11 +315,11 @@ function App() {
                 </div>
 
                 <div className = 'form-group'>
-                  <label htmlFor='Type_of_Loan'>Type of Loan</label>
+                  <label htmlFor='Loan_Type'>Type of Loan</label>
                   <select 
-                    id="Type_of_Loan"
-                    name="Type_of_Loan"
-                    value={formData.Type_of_Loan}
+                    id="Loan_Type"
+                    name="Loan_Type"
+                    value={formData.Loan_Type}
                     onChange={handleInputChange}
                   >
                     <option value="">Select loan types</option>
