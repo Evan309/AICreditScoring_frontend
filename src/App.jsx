@@ -15,18 +15,18 @@ function App() {
     Changed_Credit_Limit: '',
     Credit_History_Age: '',
     Outstanding_Debt: '',
-    Number_of_Delayed_Payment: '',
+    Num_of_Delayed_Payment: '',
     Credit_Mix: '',
     Credit_Utilization_Ratio: '',
-    Delay_From_Due_Date: '',
-    Number_of_Loans: '',
+    Delay_from_due_date: '',
+    Num_of_Loan: '',
     Interest_Rate: '',
-    Total_EMI_Per_Month: '',
-    Loan_Type: '',
-    Payment_of_Minimum_Amount: '',
+    Total_EMI_per_month: '',
+    Type_of_Loan: '',
+    Payment_of_Min_Amount: '',
     Spend_Level: '',
     Payment_Size: '',
-    Amount_Invested_Monthly: ''
+    Amount_invested_monthly: ''
   });
 
   const [prediction, setPrediction] = useState(null);
@@ -226,11 +226,11 @@ function App() {
                 </div>
 
                 <div className = 'form-group'>
-                  <label htmlFor='Number_of_Delayed_Payment'>Number of Delayed Payments</label>
+                  <label htmlFor='Num_of_Delayed_Payment'>Number of Delayed Payments</label>
                   <input 
                     type='number' 
-                    name="Number_of_Delayed_Payment"
-                    value={formData.Number_of_Delayed_Payment}
+                    name="Num_of_Delayed_Payment"
+                    value={formData.Num_of_Delayed_Payment}
                     onChange={handleInputChange}
                     placeholder="Enter number of delayed payments" 
                   />
@@ -263,11 +263,11 @@ function App() {
                 </div>
 
                 <div className = 'form-group'>
-                  <label htmlFor='Delay_From_Due_Date'>Delay from Due Date (days)</label>
+                  <label htmlFor='Delay_from_due_date'>Delay from Due Date (days)</label>
                   <input 
                     type='number' 
-                    name="Delay_From_Due_Date"
-                    value={formData.Delay_From_Due_Date}
+                    name="Delay_from_due_date"
+                    value={formData.Delay_from_due_date}
                     onChange={handleInputChange}
                     placeholder="Enter average delay from due date" 
                   />
@@ -282,11 +282,11 @@ function App() {
               <div className = 'form-grid'>
 
                 <div className = 'form-group'>
-                  <label htmlFor='Number_of_Loans'>Number of Loans</label>
+                  <label htmlFor='Num_of_Loan'>Number of Loans</label>
                   <input 
                     type='number' 
-                    name="Number_of_Loans"
-                    value={formData.Number_of_Loans}
+                    name="Num_of_Loan"
+                    value={formData.Num_of_Loan}
                     onChange={handleInputChange}
                     placeholder="Enter number of loans" 
                   />
@@ -304,22 +304,22 @@ function App() {
                 </div>
 
                 <div className = 'form-group'>
-                  <label htmlFor='Total_EMI_Per_Month'>Total EMI per Month ($)</label>
+                  <label htmlFor='Total_EMI_per_month'>Total EMI per Month ($)</label>
                   <input 
                     type='number' 
-                    name="Total_EMI_Per_Month"
-                    value={formData.Total_EMI_Per_Month}
+                    name="Total_EMI_per_month"
+                    value={formData.Total_EMI_per_month}
                     onChange={handleInputChange}
                     placeholder="Enter total EMI per month" 
                   />
                 </div>
 
                 <div className = 'form-group'>
-                  <label htmlFor='Loan_Type'>Type of Loan</label>
+                  <label htmlFor='Type_of_Loan'>Type of Loan</label>
                   <select 
-                    id="Loan_Type"
-                    name="Loan_Type"
-                    value={formData.Loan_Type}
+                    id="Type_of_Loan"
+                    name="Type_of_Loan"
+                    value={formData.Type_of_Loan}
                     onChange={handleInputChange}
                   >
                     <option value="">Select loan types</option>
@@ -335,11 +335,11 @@ function App() {
               <h3>Payment Behavior</h3>
 
               <div className = 'form-group'>
-                  <label htmlFor='Payment_of_Minimum_Amount'>Payment of Minimum Amount</label>
+                  <label htmlFor='Payment_of_Min_Amount'>Payment of Minimum Amount</label>
                   <select 
-                    id='Payment_of_Minimum_Amount'
-                    name="Payment_of_Minimum_Amount"
-                    value={formData.Payment_of_Minimum_Amount}
+                    id='Payment_of_Min_Amount'
+                    name="Payment_of_Min_Amount"
+                    value={formData.Payment_of_Min_Amount}
                     onChange={handleInputChange}
                   >
                     <option value="">Select payment behavior</option>
@@ -384,11 +384,11 @@ function App() {
               <div className = 'form-grid'>
 
                   <div className = 'form-group'>
-                    <label htmlFor='Amount_Invested_Monthly'>Amount Invested Monthly ($)</label>
+                    <label htmlFor='Amount_invested_monthly'>Amount Invested Monthly ($)</label>
                     <input 
                       type='number' 
-                      name="Amount_Invested_Monthly"
-                      value={formData.Amount_Invested_Monthly}
+                      name="Amount_invested_monthly"
+                      value={formData.Amount_invested_monthly}
                       onChange={handleInputChange}
                       placeholder="Enter monthly investment amount" 
                     />
