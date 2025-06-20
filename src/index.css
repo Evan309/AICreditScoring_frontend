@@ -1,8 +1,32 @@
-:root {
-  height: 100vh; /* Make sure the root div takes at least the full viewport height */
-  width: 100%;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  background-color: rgb(236, 236, 236);
-  font-family: 'Arial', sans-serif;
+  flex-direction: column;
+}
+
+.MuiContainer-root {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.MuiTypography-h4 {
+  color: #1a237e;
+}
+
+.MuiButton-containedPrimary {
+  background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+  color: #fff;
+}
+
+.MuiPaper-root {
+  background: #f9fafc;
 }
